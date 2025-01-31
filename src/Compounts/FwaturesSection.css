@@ -1,0 +1,219 @@
+.features-section {
+    padding: 4rem 0;
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.features-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.features-title {
+    font-size: 1rem;
+    font-weight:900;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    
+}
+h1{
+    font-size: smaller;
+}
+
+.main-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.feature-card {
+    background-color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px !important;
+    box-shadow: 4px 10px 11.3px 2px rgba(0, 0, 0, 0.25) !important;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.feature-content {
+    padding: 2rem !important;
+    text-align: center;
+}
+
+.feature-icon {
+    margin-bottom: 1rem;
+    display: flex;
+    object-fit: contain;
+    transform: translate(5%, 25%);
+    justify-content: left;
+}
+
+.feature-heading {
+    font-size: .5rem;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1rem;
+    text-align: left;
+    justify-content: left;
+}
+
+.feature-description {
+    color: #000000;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.additional-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+.title-desc{
+    text-align: center;
+    font-size: 1rem !important ;
+}
+.additional-feature-card {
+    border: none !important;
+}
+
+.additional-feature-card.cyan-bg {
+    background: linear-gradient(95.51deg, #15B7A8 2.15%, #3A82F5 98.57%) !important;
+    border-radius: 15px !important;
+    box-shadow: 4px 10px 11.3px 2px rgba(0, 0, 0, 0.25) !important;
+}
+
+.additional-feature-card.dark-bg {
+    background-color: #000000 !important;
+    border: 1px solid #ffffff !important;
+    border-radius: 15px !important;
+    box-shadow: 4px 10px 11.3px 2px rgba(0, 0, 0, 0.25) !important;
+}
+/* Rectangle 312 */
+
+
+/* Rectangle 250 */
+
+
+
+
+
+.additional-feature-content {
+    padding: 2rem !important;
+}
+
+.additional-feature-heading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.feature-icon-box {
+    width: 54px; /* Square box */
+    height: 54px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-icon-box.bg-1 {
+    background: #CCFBF1;
+    align-content: center;
+    justify-content: center;
+}
+
+.feature-icon-box.bg-2 {
+    background: #DBEAFE;
+}
+
+.feature-icon-box.bg-3 {
+    background: #6affee8e;
+}
+
+.feature-icon {
+    width: 32px; /* Adjust image/icon size */
+    height: 32px;
+    
+}
+
+.feature-list-item {
+    display: flex;
+    align-items: center;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-size: 1rem;
+}
+
+.bullet {
+    margin-right: 0.5rem;
+    color: white;
+}
+.title-desc {
+    font-size: 1.2rem !important; /* Adjusted font size for mobile */
+}
+/* Responsive Design */
+@media (max-width: 768px) {
+    .features-section {
+        padding: 3rem 0;
+    }
+
+    .features-title {
+        font-size: 3rem !important; 
+        margin-bottom: 2rem;
+        font-weight: 700 !important;
+    }
+
+    .main-features,
+    .additional-features {
+        grid-template-columns: 1fr;
+    }
+    .feature-icon-box {
+        width: 50px; /* Ensures a square box */
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #c27676; /* Optional: Adds a background */
+        border-radius: 8px; /* Optional: Rounds the edges slightly */
+    }
+    
+    .feature-icon {
+        width: 30px; /* Reduces image size */
+        height: 30px;
+        
+        transform: translate(5%, 25%)
+    }
+    
+    .feature-card,
+    .additional-feature-card {
+        margin: 0 1rem;
+    }
+
+    .feature-content,
+    .additional-feature-content {
+        padding: 1.5rem !important;
+    }
+    .title-desc {
+        text-align: center;
+        font-size: 1.5rem !important; /* Increased font size */
+        font-weight: 400;
+        margin-top: 0.5rem;
+        color: #0a0a0a;
+    }
+    
+}
