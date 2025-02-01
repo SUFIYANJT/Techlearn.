@@ -1,0 +1,7 @@
+from django.contrib import admin
+
+from .models import Contact
+
+@admin.register(Contact)
+class UserProfileAdmin(admin.ModelAdmin):
+    list_display = ('fullName', 'phone','email')
