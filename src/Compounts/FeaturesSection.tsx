@@ -16,7 +16,7 @@ const FeaturesSection = () => {
       {
         icon: BoxIcon,
         title: "Live Projects",
-        description: "Work on real startup projects and build a compelling portfolio"
+        description: "Work on real startup projects and build a compelling and impressive portfolio"
       },
       {
         icon: Team,
@@ -61,9 +61,11 @@ const FeaturesSection = () => {
                 <Box className={`feature-icon-box ${index === 0 ? 'bg-1' : index === 1 ? 'bg-2' : 'bg-3'}`}>
                   <img src={feature.icon} alt="Feature Icon" className="feature-icon" />
                 </Box>
+                <br/>
                 <Typography variant="h5" className="feature-heading">
                   {feature.title}
                 </Typography>
+                <br/>
                 <Typography className="feature-description">
                   {feature.description}
                 </Typography>
@@ -81,6 +83,7 @@ const FeaturesSection = () => {
                   <Typography variant="h5" className="additional-feature-heading">
                     {feature.title}
                   </Typography>
+                  <br/>
                   <Box component="ul" className="feature-list">
                     {feature.items.map((item, itemIndex) => (
                       <Box 

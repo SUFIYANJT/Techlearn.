@@ -3,6 +3,10 @@ import Header from "../Compounts/Header";
 import './Home.css';
 import { ArrowRight } from 'lucide-react';
 import FeaturesSection from "../Compounts/FeaturesSection";
+import LiveProjectInternships from "../Compounts/LiveProjectInternships";
+import PartnerSection from "../Compounts/PartnerSection";
+import ContactForm from "../Compounts/ContactForm";
+
 
 interface HomeProps {}
 
@@ -53,6 +57,9 @@ const Home: React.FC<HomeProps> = () => {
       </div>
       </section>
       <FeaturesSection />
+      <LiveProjectInternships />
+      <PartnerSection />
+      <ContactForm />
     </div>
     
   );

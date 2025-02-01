@@ -1,0 +1,128 @@
+.internship-container {
+    background-color: #171717 !important;
+    color: white;
+    padding: 1.5rem;
+  }
+  
+  .header1 {
+    margin-bottom: 2rem;
+    color: aliceblue !important;
+    font-size: 3rem;
+    text-align: center;
+  }
+  
+  .title1 {
+    font-weight: 900;
+    margin-bottom: 0.5rem;
+  }
+  
+  .subtitle {
+    color: #d1d5db;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+  
+  .how-it-works {
+    margin-bottom: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  
+  .steps-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .number-container {
+    flex-shrink: 0;
+  }
+  
+  .how-it-works {
+    font-weight: 600;
+    width: fit-content;
+    height: fit-content;
+    background-color: #262626;
+    border-radius: 20px; 
+    padding: 5%;
+  }
+  
+  .number-box {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: linear-gradient(82.82deg, #09F8C5 -25.59%, #00A0F4 72.83%);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+  }
+  
+  .step-content {
+    flex-grow: 1;
+  }
+  
+  .step-title {
+    font-weight: 800;
+    margin-bottom: 0.2rem;
+  }
+  
+  .step-description {
+    color: #9ca3af;
+    font-size: 0.875rem;
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card1 {
+    position: relative;
+    height: 6rem;
+    border-radius: 0.5rem;
+    background-color: #262626;
+  }
+  
+  .card1 .apply-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: linear-gradient(82.82deg, #09F8C5 -25.59%, #00A0F4 72.83%) !important;
+    border: none;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  } 
+  .card1 .apply-btn:hover {
+    background: linear-gradient(82.82deg, #00A0F4 -25.59%, #09F8C5 72.83%);
+  }
+  .view-more-btn {
+    width: 100%;
+    background-color: #27272a;
+    color: white;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+  }
+  
+  .view-more-btn:hover {
+    background-color: #3f3f46;
+  }
+  

@@ -1,0 +1,96 @@
+.partner-container {
+    max-width: 600px;
+    padding: 24px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .partner-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  
+  .partner-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  
+  .partner-subtitle {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .partner-card {
+    padding: 24px;
+    border-radius: 16px;
+    color: white;
+  }
+  
+  .college-card {
+    background: linear-gradient(135deg, #00c4b0 0%, #2b7cf6 100%);
+  }
+  
+  .startup-card {
+    background-color: #000000;
+  }
+  
+  .card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+  
+  .feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+  }
+  
+  .feature-list li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    font-size: 15px;
+  }
+  
+  .feature-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: white;
+  }
+  
+  .partner-button {
+    width: 100%;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .college-button {
+    background-color: white;
+    color: #2b7cf6;
+  }
+  
+  .college-button:hover {
+    background-color: #f8f8f8;
+  }
+  
+  .startup-button {
+    background-color: #00c4b0;
+    color: white;
+  }
+  
+  .startup-button:hover {
+    background-color: #00b3a1;
+  }
