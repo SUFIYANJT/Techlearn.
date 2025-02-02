@@ -47,7 +47,7 @@ const Courses = () => {
                 <h5 className="card-title">{course.title}</h5>
                 <p className="card-text text-muted">{course.description}</p>
                 <p className="text-success fw-bold">${course.price}</p>
-                <button className="btn btn-primary">Buy Now</button>
+                <button className="btn btn-primary">Apply Now</button>
               </div>
             </div>
           </div>
