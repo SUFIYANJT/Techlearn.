@@ -6,6 +6,7 @@ import FeaturesSection from "../Compounts/FeaturesSection";
 import LiveProjectInternships from "../Compounts/LiveProjectInternships";
 import PartnerSection from "../Compounts/PartnerSection";
 import ContactForm from "../Compounts/ContactForm";
+import Footer from "../Compounts/Footer";
 
 
 interface HomeProps {}
@@ -60,6 +61,7 @@ const Home: React.FC<HomeProps> = () => {
       <LiveProjectInternships />
       <PartnerSection />
       <ContactForm />
+      <Footer />
     </div>
     
   );
