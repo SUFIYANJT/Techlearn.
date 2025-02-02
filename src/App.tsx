@@ -1,7 +1,6 @@
-import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Header from './Compounts/Header';
 import Home from './Page/Home';
+import Courses from './Page/Programs';
 
 
 const App = () => {
@@ -10,6 +9,7 @@ const App = () => {
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path='/programs' element={<Courses/>}/>
         </Routes>
       </div>
     </Router>

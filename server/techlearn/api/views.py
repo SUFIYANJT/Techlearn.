@@ -1,7 +1,7 @@
-from rest_framework import status
+from rest_framework import status,generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Contact
+from .models import Contact,Course
 from .serializer import ContactSerializer,CourseSerializer,CourseRegistrationSerializer
 
 class ContactFormView(APIView):
@@ -38,3 +38,7 @@ class CourseRegisterationFormView(APIView):
                 
             })
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class CourseListView(generics.ListAPIView):
+    queryset = Course.objects.all()
+    serializer_class = CourseSerializer
