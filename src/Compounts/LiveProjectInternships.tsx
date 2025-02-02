@@ -27,36 +27,40 @@ const LiveProjectInternships = () => {
         <p className="subtitle">Work on real projects with innovative startups</p>
       </div>
 
-      <div className="how-it-works">
-        <h2 className="section-title">How It Works</h2>
+      <div className="main-content">
+        <div className="how-it-works">
+          <h2 className="section-title">How It Works</h2>
+          <div className="steps-container">
+            {steps.map((step) => (
+              <div key={step.number} className="step-item">
+                <div className="number-container">
+                  <div className="number-box">{step.number}</div>
+                </div>
+                <div className="step-content">
+                  <h3 className="step-title">{step.title}</h3>
+                  <p className="step-description">{step.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
 
-        <div className="steps-container">
-          {steps.map((step) => (
-            <div key={step.number} className="step-item">
-              <div className="number-container">
-                <div className="number-box">{step.number}</div>
-              </div>
-              <div className="step-content">
-                <h3 className="step-title">{step.title}</h3>
-                <p className="step-description">{step.description}</p>
-              </div>
+        <div className="right-section">
+          <div className="cards-container">
+            <div className="card1">
+              <button className="apply-btn">Apply Now</button>
             </div>
-          ))}
+            <div className="card1">
+              <button className="apply-btn">Apply Now</button>
+            </div>
+            <div className="card1">
+              <button className="apply-btn">Apply Now</button>
+            </div>
+          </div>
+          
         </div>
+       
       </div>
-
-      <div className="cards-container">
-        <div className="card1">
-          <button className="apply-btn">Apply Now</button>
-        </div>
-        <div className="card1">
-          <button className="apply-btn">Apply Now</button>
-        </div>
-        <div className="card1">
-          <button className="apply-btn">Apply Now</button>
-        </div>
-      </div>
-
       <button className="view-more-btn">View More Opportunities</button>
     </div>
   );

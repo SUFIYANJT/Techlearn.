@@ -1,6 +1,7 @@
 import React from 'react';
 import './PartnerSection.css';
-
+import Flash from '../assets/flash.png'
+import Collage from '../assets/Collage.png'
 const PartnerSection = () => {
   return (
     <div className="partner-container">
@@ -13,6 +14,7 @@ const PartnerSection = () => {
 
       <div className="cards-wrapper">
         <div className="partner-card college-card">
+          <img src={Collage} className='icon'></img>
           <h2 className="card-title">For Colleges</h2>
           <ul className="feature-list">
             <li>Industry-aligned curriculum</li>
@@ -25,6 +27,7 @@ const PartnerSection = () => {
         </div>
 
         <div className="partner-card startup-card">
+          <img src={Flash}  className='icon'></img>
           <h2 className="card-title">For Startups</h2>
           <ul className="feature-list">
             <li>Access to trained talent pool</li>
