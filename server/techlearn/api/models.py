@@ -17,6 +17,7 @@ class Course(models.Model):
     price = models.IntegerField(blank=False, null=False,default=0)  # Required and not null
     image = models.ImageField(upload_to='course_images/', blank=False, null=False,default='course_images/internship_demo.jpg')  # Required and not null
     
+from django.core.exceptions import ValidationError
 
 class CourseRegistration(models.Model):
     class Year(models.IntegerChoices):
@@ -47,7 +48,7 @@ class CourseRegistration(models.Model):
     ieeMember = models.BooleanField(blank=False, null=False)
     ieeId = models.CharField(max_length=100, blank=True, null=True)  # `blank=True` by default, conditional validation in clean()
     isReferralId = models.BooleanField(blank=False, null=False)
-    referralCode = models.CharField(max_length=100)
+    referralCode = models.CharField(max_length=100, blank=True, null=True)
     interestInStudingAboard = models.IntegerField(choices=Aboard.choices, blank=False, null=False)
     InterestedIn = models.IntegerField(choices=Interest.choices, blank=False, null=False)
     bill = models.CharField(max_length=100)
@@ -56,5 +57,9 @@ class CourseRegistration(models.Model):
         # Custom validation: ieeId is required only if ieeMember is True
         if self.ieeMember and not self.ieeId:
             raise ValidationError({'ieeId': 'IEE ID is required if you are an IEE member.'})
+
+        # Custom validation: referralCode is required if isReferralId is True
+        if self.isReferralId and not self.referralCode:
+            raise ValidationError({'referralCode': 'Referral Code is required if you have a referral ID.'})
         
         super().clean()  # Call the parent class's clean method

@@ -21,10 +21,19 @@ class CourseRegistrationSerializer(serializers.ModelSerializer):
             'ieeMember', 'ieeId', 'isReferralId', 'referralCode', 
             'interestInStudingAboard', 'InterestedIn', 'bill'
         ]
+    
     def validate(self, data):
         """
-        Check that ieeId is provided if ieeMember is True.
+        Custom validation:
+        1. Check that ieeId is provided if ieeMember is True.
+        2. Check that referralCode is provided if isReferralId is True.
         """
+        # Validate IEE ID if the user is an IEE member
         if data.get('ieeMember') and not data.get('ieeId'):
             raise serializers.ValidationError({'ieeId': 'IEE ID is required if you are an IEE member.'})
+        
+        # Validate referralCode if the user has a referral ID
+        if data.get('isReferralId') and not data.get('referralCode'):
+            raise serializers.ValidationError({'referralCode': 'Referral Code is required if you have a referral ID.'})
+
         return data
