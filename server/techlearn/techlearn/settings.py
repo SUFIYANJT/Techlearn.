@@ -80,6 +80,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Example: React frontend
     "https://yourfrontend.com",
 ]
+CSRF_TRUSTED_ORIGINS = [
+    "https://techlearn-server.onrender.com",
+    "http://127.0.0.1",
+    "http://localhost",
+]
 
 WSGI_APPLICATION = 'techlearn.wsgi.application'
 
