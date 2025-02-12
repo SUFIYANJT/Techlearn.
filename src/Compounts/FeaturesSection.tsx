@@ -1,5 +1,3 @@
-import React from 'react';
-import { LightbulbIcon, FolderKanban, Users } from 'lucide-react';
 import { Card, CardContent, Typography, Box, Container, Grid } from '@mui/material';
 import './FwaturesSection.css';
 import Bulb from '../assets/bulb-on-svgrepo-com.svg';

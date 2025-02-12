@@ -1,5 +1,5 @@
 // ContactForm.jsx
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './ContactForm.css';
 import { Mail, Phone, MapPin, Facebook, Instagram, Linkedin } from 'lucide-react';
 
@@ -85,7 +85,7 @@ const ContactForm = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                rows="4"
+                rows={4}
               />
             </div>
 

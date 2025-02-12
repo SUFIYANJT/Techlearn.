@@ -1,4 +1,3 @@
-import React from 'react';
 import './PartnerSection.css';
 import Flash from '../assets/flash.png'
 import Collage from '../assets/Collage.png'
