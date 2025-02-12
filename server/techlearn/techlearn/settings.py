@@ -79,11 +79,13 @@ CORS_ALLOW_ALL_ORIGINS = True  # Allows all origins (for development)
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Example: React frontend
     "https://yourfrontend.com",
+    "https://teklearn-bcd2c.web.app"
 ]
 CSRF_TRUSTED_ORIGINS = [
     "https://techlearn-server.onrender.com",
     "http://127.0.0.1",
     "http://localhost",
+    "https://teklearn-bcd2c.web.app"
 ]
 
 WSGI_APPLICATION = 'techlearn.wsgi.application'
