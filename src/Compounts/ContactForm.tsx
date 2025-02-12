@@ -25,6 +25,7 @@ const ContactForm = () => {
   };
 
   return (
+    <section id="ContactForm" >
     <div className="contact-container">
       <div className="contact-header">
         <h1 className="contact-title">Get in Touch</h1>
@@ -73,9 +74,9 @@ const ContactForm = () => {
                 onChange={handleChange}
               >
                 <option value="">Select an option</option>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+                <option value="option1">Live Project</option>
+                <option value="option2">For Colleges</option>
+                <option value="option3">For Startups</option>
               </select>
             </div>
 
@@ -138,7 +139,10 @@ const ContactForm = () => {
           </div>
         </div>
       </div>
+   
     </div>
+    </section>
+   
   );
 };
 

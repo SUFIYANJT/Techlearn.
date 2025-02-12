@@ -23,6 +23,14 @@ function Header() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+   // Scroll to ContactForm section
+   const handleScrollToContact = () => {
+    const section = document.getElementById('ContactForm');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    handleCloseNavMenu();
+  };
 
   return (
     <AppBar position="fixed" sx={{ backgroundColor: '#171717', top: 0 }}>
@@ -56,7 +64,7 @@ function Header() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={handleScrollToContact}>
                   <Typography
                     sx={{
                       textAlign: 'center',
@@ -85,7 +93,7 @@ function Header() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={handleScrollToContact}
                 sx={{
                   my: 2,
                   color: 'white',

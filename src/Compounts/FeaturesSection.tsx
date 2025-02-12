@@ -89,7 +89,7 @@ const FeaturesSection = () => {
                         key={itemIndex} 
                         className="feature-list-item"
                       >
-                        <span className="bullet">•</span>
+                       
                         {item}
                       </Box>
                     ))}

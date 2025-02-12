@@ -71,8 +71,8 @@
 .form-field select,
 .form-field input,
 .form-field textarea {
-  width: 200%; /* Change fit-content to 100% */
-  max-width: 500px; /* Adjust width as needed */
+  width: 150%; /* Change fit-content to 100% */
+  /* Adjust width as needed */
   padding: 14px; /* Slightly increase padding */
   background-color: #1a1a1a;
   border: 1px solid #333;

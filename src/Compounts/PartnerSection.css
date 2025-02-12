@@ -12,7 +12,6 @@
 .partner-title {
   font-size: 3rem;
   font-weight: 700;
-
 }
 
 .partner-subtitle {
@@ -22,17 +21,43 @@
 
 .cards-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Aligns cards side by side */
+  justify-content: center;
   gap: 50px;
+  flex-wrap: wrap; /* Ensures responsiveness */
 }
 
-  
+.partner-card {
+  flex: 1; /* Allows equal width distribution */
+  max-width: 45%; /* Ensures proper spacing */
+  padding: 24px;
+  border-radius: 16px;
+  color: white;
+}
+
+.college-card {
+  align-content: center;
+  align-items: center !important;
+  justify-content: center !important;
+  background: linear-gradient(135deg, #00c4b0 0%, #2b7cf6 100%);
+}
+
+.startup-card {
+  background-color: #000000;
+}
+
+.feature-list {
+  list-style: none;
+  font-size: 30px;
+  padding: 0;
+  margin: 0 0 24px 0;
+}
+
 .feature-list li {
   position: relative;
   padding-left: 20px;
   margin-bottom: 12px;
   font-size: 1.5rem;
-
 }
 
 .feature-list li:before {
@@ -52,12 +77,10 @@
   cursor: pointer;
   align-items: center;
   justify-content: center;
-  
   transition: all 0.2s ease;
 }
 
 .college-button {
-
   background-color: white;
   color: #2b7cf6;
 }
@@ -73,147 +96,73 @@
 
 .startup-button:hover {
   background-color: #00b3a1;
-}.partner-card {
-  padding: 24px;
-  border-radius: 16px;
-  color: white;
 }
 
-.college-card {
-  align-content: center;
-  width: 40% !important;
-  align-items: center !important;
-  justify-content: center !important;
-  background: linear-gradient(135deg, #00c4b0 0%, #2b7cf6 100%);
-}
-
-.startup-card {
-  background-color: #000000;
-  width: 30%;
-}
-.cards-wrapper {
-  display: flex;
-  flex-direction: row; /* Aligns cards side by side */
-  justify-content: center;
-  gap: 50px;
-  flex-wrap: wrap; /* Ensures responsiveness */
-}
-
-.partner-card {
-  flex: 1; /* Allows equal width distribution */
-  max-width: 45%; /* Ensures proper spacing */
-  padding: 24px;
-  border-radius: 16px;
-  color: white;
-}
-
-.card-title {
-  font-size: 2rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.feature-list {
-  list-style: none;
-  font-size: 30px;
-  padding: 0;
-  margin: 0 0 24px 0;
-}
+/* ✅ Mobile View Fixes */
 @media (max-width: 768px) {
-.partner-container {
-    max-width: 80%;
+  .partner-container {
+    width: 100%;
     padding: 24px;
-    font-family: system-ui, -apple-system, sans-serif;
   }
-  
+
   .partner-header {
     text-align: center;
     margin-bottom: 32px;
   }
-  
+
   .partner-title {
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 8px;
   }
-  
+
   .partner-subtitle {
     font-size: 16px;
     color: #666;
   }
-  
+
   .cards-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    flex-direction: column; /* Stack cards vertically */
+    gap: 16px;
+    align-items: center;
   }
-  
-    
+
+  .partner-card {
+    width: 100%; /* Full width on mobile */
+    max-width: none;
+  }
+
+  .college-card, .startup-card {
+    width: 100%; /* Ensures they expand */
+  }
+
+  .feature-list {
+    font-size: 20px;
+  }
+
   .feature-list li {
-    position: relative;
-    padding-left: 20px;
-    margin-bottom: 12px;
     font-size: 15px;
   }
-  
-  .feature-list li:before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: white;
-  }
-  
+
   .partner-button {
     width: 100%;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
   }
-  
+
   .college-button {
     background-color: white;
     color: #2b7cf6;
   }
-  
+
   .college-button:hover {
     background-color: #f8f8f8;
   }
-  
+
   .startup-button {
     background-color: #00c4b0;
     color: white;
   }
-  
+
   .startup-button:hover {
     background-color: #00b3a1;
-  }.partner-card {
-    padding: 24px;
-    border-radius: 16px;
-    color: white;
   }
-  
-  .college-card {
-    background: linear-gradient(135deg, #00c4b0 0%, #2b7cf6 100%);
-  }
-  
-  .startup-card {
-    background-color: #000000;
-  }
-  
-  .card-title {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 20px;
-  }
-  
-  .feature-list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 24px 0;
-  }
-
 }

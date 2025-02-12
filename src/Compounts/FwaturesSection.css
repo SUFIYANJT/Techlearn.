@@ -9,11 +9,11 @@
     border-radius: 8px
 }
 .additional-feature-heading{
-    font-size: 1.5rem !important;
+    font-size: 2rem !important;
     font-weight: 900 !important;
 }
 .feature-list-item{
-   font-size: 1.3em !important;
+   font-size: 1em !important;
     line-height: 1.6;
     text-align: left;
 }
@@ -92,7 +92,8 @@
     padding: 1rem !important;
 }
 .feature-list {
-    list-style: none;
+    list-style: none !important;
+    list-style-type: none !important;
     padding: 0;
     margin: 0;
 }
@@ -122,11 +123,16 @@
         color: white;
         box-shadow: 4px 10px 11.3px 2px rgba(0, 0, 0, 0.25) !important;
     }
-    .bullet {
-        margin-right: 01rem !important;
-       
-    }
-     
+    
+    .feature-list {
+        list-style: none !important;
+        padding-left: 0;
+      }
+      .feature-list-item {
+        list-style-type: none !important;
+      }
+      
+      
 /* Responsive Design */
 @media (max-width: 768px) {
     .features-section {
