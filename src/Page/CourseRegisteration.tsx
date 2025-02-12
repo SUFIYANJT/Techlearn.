@@ -69,7 +69,7 @@ const CourseRegistration = () => {
         if (Object.keys(formErrors).length === 0) {
             setLoading(true);
             try {
-                await axios.post("http://127.0.0.1:8000/courseregisteration/", formData);
+                await axios.post("https://techlearn-server.onrender.com/courseregisteration/", formData);
                 alert("Registration successful!");
                 setFormData({
                     fullName: "",
