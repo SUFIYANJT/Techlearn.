@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 interface CourseRegistrationData {
     fullName: string;
@@ -7,7 +8,7 @@ interface CourseRegistrationData {
     email: string;
     college: string;
     year: number;
-    program: number;
+    program: string;
     ieeMember: boolean;
     ieeId?: string;
     isReferralId: boolean;
@@ -18,13 +19,14 @@ interface CourseRegistrationData {
 }
 
 const CourseRegistration = () => {
+    const { title } = useParams<{ title: string }>();
     const [formData, setFormData] = useState<CourseRegistrationData>({
         fullName: "",
         phone: "",
         email: "",
         college: "",
         year: 1,
-        program: 1,
+        program: title ??"",
         ieeMember: false,
         ieeId: "",
         isReferralId: false,
@@ -47,6 +49,14 @@ const CourseRegistration = () => {
 
     const validateForm = () => {
         const newErrors: any = {};
+        // Validate required fields
+        const requiredFields = ['fullName', 'phone', 'email', 'college'];
+        requiredFields.forEach(field => {
+            if (!formData[field as keyof CourseRegistrationData]) {
+                newErrors[field] = `${field.charAt(0).toUpperCase() + field.slice(1).replace(/([A-Z])/g, ' $1')} is required.`;
+            }
+        });
+
         // Check for IEE ID if IEE Member is selected
         if (formData.ieeMember && !formData.ieeId) {
             newErrors.ieeId = "IEE ID is required if you are an IEE member.";
@@ -68,7 +78,7 @@ const CourseRegistration = () => {
         if (Object.keys(formErrors).length === 0) {
             setLoading(true);
             try {
-                await axios.post("https://techlearn-server.onrender.com/courseregisteration/", formData);
+                await axios.post("https://techlearn-server.onrender.com/courseregistration/", formData);
                 alert("Registration successful!");
                 setFormData({
                     fullName: "",
@@ -76,7 +86,7 @@ const CourseRegistration = () => {
                     email: "",
                     college: "",
                     year: 1,
-                    program: 1,
+                    program: title ?? "",
                     ieeMember: false,
                     ieeId: "",
                     isReferralId: false,
@@ -194,7 +204,7 @@ const CourseRegistration = () => {
                 
                 <form onSubmit={handleSubmit}>
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Full Name</label>
+                        <label style={formStyles.label}>Full Name *</label>
                         <input
                             type="text"
                             name="fullName"
@@ -210,7 +220,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Phone</label>
+                        <label style={formStyles.label}>Phone *</label>
                         <input
                             type="text"
                             name="phone"
@@ -226,7 +236,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Email</label>
+                        <label style={formStyles.label}>Email *</label>
                         <input
                             type="email"
                             name="email"
@@ -244,7 +254,7 @@ const CourseRegistration = () => {
                     <div style={formStyles.sectionTitle}>Educational Information</div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>College</label>
+                        <label style={formStyles.label}>College *</label>
                         <input
                             type="text"
                             name="college"
@@ -260,7 +270,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Year</label>
+                        <label style={formStyles.label}>Year *</label>
                         <select
                             name="year"
                             value={formData.year}
@@ -274,22 +284,12 @@ const CourseRegistration = () => {
                             <option value={4}>4th Year</option>
                         </select>
                     </div>
+                    
+                   
 
-                    <div style={formStyles.sectionTitle}>Program Information</div>
+        
 
-                    <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Program</label>
-                        <select
-                            name="program"
-                            value={formData.program}
-                            onChange={handleChange}
-                            required
-                            style={formStyles.select}
-                        >
-                            <option value={1}>Data Science with AI</option>
-                            <option value={2}>Design With AI</option>
-                        </select>
-                    </div>
+            
 
                     <div style={formStyles.formGroup}>
                         <div style={formStyles.checkboxLabel}>
@@ -306,12 +306,13 @@ const CourseRegistration = () => {
 
                     {formData.isReferralId && (
                         <div style={formStyles.formGroup}>
-                            <label style={formStyles.label}>Referral Code</label>
+                            <label style={formStyles.label}>Referral Code *</label>
                             <input
                                 type="text"
                                 name="referralCode"
                                 value={formData.referralCode || ""}
                                 onChange={handleChange}
+                                required
                                 style={formStyles.input}
                                 onFocus={(e) => e.target.style.borderColor = '#3498db'}
                                 onBlur={(e) => e.target.style.borderColor = '#ddd'}
@@ -324,7 +325,7 @@ const CourseRegistration = () => {
                     <div style={formStyles.sectionTitle}>Additional Information</div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Interest in Studying Abroad</label>
+                        <label style={formStyles.label}>Interest in Studying Abroad *</label>
                         <select
                             name="interestInStudingAboard"
                             value={formData.interestInStudingAboard}
@@ -339,7 +340,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Interest</label>
+                        <label style={formStyles.label}>Interest *</label>
                         <select
                             name="InterestedIn"
                             value={formData.InterestedIn}
@@ -356,17 +357,16 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>Bill</label>
+                        <label style={formStyles.label}>Bill (Optional)</label>
                         <input
                             type="text"
                             name="bill"
                             value={formData.bill}
                             onChange={handleChange}
-                            required
                             style={formStyles.input}
                             onFocus={(e) => e.target.style.borderColor = '#3498db'}
                             onBlur={(e) => e.target.style.borderColor = '#ddd'}
-                            placeholder="Enter bill information"
+                            placeholder="Enter bill information (optional)"
                         />
                         {errors.bill && <div style={formStyles.error}>{errors.bill}</div>}
                     </div>
