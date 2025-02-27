@@ -1,6 +1,6 @@
 import './PartnerSection.css';
-import Flash from '../assets/flash.png'
-import Collage from '../assets/Collage.png'
+import Flash from '../assets/react.svg'
+import Collage from '../assets/Clg.svg'
 const PartnerSection = () => {
   return (
     <div className="partner-container">

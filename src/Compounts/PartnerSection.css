@@ -48,7 +48,7 @@
 
 .feature-list {
   list-style: none;
-  font-size: 30px;
+  font-size: 20px;
   padding: 0;
   margin: 0 0 24px 0;
 }
@@ -56,25 +56,38 @@
 .feature-list li {
   position: relative;
   padding-left: 20px;
+  padding-top: 2%;
   margin-bottom: 12px;
-  font-size: 1.5rem;
+  font-size: 1rem;
+}
+.card-title{
+  margin-top:4%;
 }
 
+.icon{
+
+  width: 3rem !important;
+  height: 3rem !important;
+}
 .feature-list li:before {
-  content: "•";
+  content: "✔  ";
   position: absolute;
   left: 0;
   color: white;
+ 
 }
-
+.partner-card {
+  padding-bottom: 2%;
+}
 .partner-button {
-  width: 40%;
+  width: 90%;
   padding: 12px 24px;
   border: none;
   border-radius: 8px;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;

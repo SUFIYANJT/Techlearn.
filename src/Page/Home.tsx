@@ -54,7 +54,7 @@ const Home: React.FC<HomeProps> = () => {
             </div>
           </div>
         </div>
-        <div className="rectangle"></div>
+      
       </div>
       </section>
       <FeaturesSection />

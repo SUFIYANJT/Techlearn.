@@ -38,7 +38,9 @@ function Header() {
         <Toolbar disableGutters sx={{ px: '16px', py: '1px', color: '#D1D5DB' }}> {/* ✅ Padding 8px,12px */}
           {/* ✅ LOGO */}
           <Box sx={{ display: 'flex', alignItems: 'center', mr: 2 }}>
+            <a href='#'>
             <img src={Logo} alt="Logo" style={{ height: 40 }} />
+            </a>
           </Box>
 
           {/* ✅ Mobile Menu Icon (Aligned to the Right) */}
@@ -64,53 +66,70 @@ function Header() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleScrollToContact}>
-                  <Typography
-                    sx={{
-                      textAlign: 'center',
-                      fontFamily: ', "Apple", sans-serif', // ✅ Font applied
-                      fontSize: '16px', // ✅ Font size set
-                      textTransform: 'capitalize', // ✅ First letter capitalized
-                      backgroundColor: page === 'Contact Us' ? '#14B8A6' : 'transparent', 
-                      color: page === 'Contact Us' ? '#fff' : 'inherit', 
-                      px: 2,
-                      py: 1,
-                      borderRadius: '4px',
-                      '&:hover': {
-                        backgroundColor: page === 'Live Projects' ? '#0D9488' : 'rgba(255, 255, 255, 0.1)',
-                      },
-                    }}
-                  >
-                    {page}
-                  </Typography>
-                </MenuItem>
-              ))}
+  <MenuItem
+    key={page}
+    onClick={() => {
+      if (page === 'Home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        handleScrollToContact();
+      }
+      handleCloseNavMenu();
+    }}
+  >
+    <Typography
+      sx={{
+        textAlign: 'center',
+        fontFamily: '"Apple", sans-serif',
+        fontSize: '16px',
+        textTransform: 'capitalize',
+        backgroundColor: page === 'Contact Us' ? '#14B8A6' : 'transparent',
+        color: page === 'Contact Us' ? '#fff' : 'inherit',
+        px: 2,
+        py: 1,
+        borderRadius: '4px',
+        '&:hover': {
+          backgroundColor: page === 'Live Projects' ? '#0D9488' : 'rgba(255, 255, 255, 0.1)',
+        },
+      }}
+    >
+      {page}
+    </Typography>
+  </MenuItem>
+))}
+
             </Menu>
           </Box>
 
           {/* ✅ Desktop Menu - Right Aligned */}
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex',px: '16px', py: '1px' }, justifyContent: 'flex-end' }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleScrollToContact}
-                sx={{
-                  my: 2,
-                  color: 'white',
-                  padding: '4px 20px',
-                  display: 'block',
-                  fontFamily: '', // ✅ Font applied
-                  fontSize: '16px', // ✅ Font size set
-                  textTransform: 'capitalize', // ✅ First letter capitalized
-                  backgroundColor: page === 'Contact Us' ? '#14B8A6' : 'transparent',
-                  '&:hover': {
-                    backgroundColor: page === 'Contact Us' ? '#0D9488' : 'rgba(255, 255, 255, 0.1)',
-                  },
-                }}
-              >
-                {page}
-              </Button>
-            ))}
+          {pages.map((page) => (
+  <Button
+    key={page}
+    onClick={() => {
+      if (page === 'Home') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else  {
+        handleScrollToContact();
+      }
+    }}
+    sx={{
+      my: 2,
+      color: 'white',
+      padding: '4px 20px',
+      display: 'block',
+      fontSize: '16px',
+      textTransform: 'capitalize',
+      backgroundColor: page === 'Contact Us' ? '#14B8A6' : 'transparent',
+      '&:hover': {
+        backgroundColor: page === 'Contact Us' ? '#0D9488' : 'rgba(255, 255, 255, 0.1)',
+      },
+    }}
+  >
+    {page}
+  </Button>
+))}
+
           </Box>
         </Toolbar>
       </Container>
