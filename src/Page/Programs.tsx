@@ -39,19 +39,22 @@ const Courses = () => {
         {courses.map((course) => (
           <div key={course.id} className="col-md-4 mb-4">
             <div className="card h-100 shadow-sm">
-              <img 
-                src={course.image} 
-                alt={course.title} 
-                className="card-img-top" 
+              <img
+                src={course.image}
+                alt={course.title}
+                className="card-img-top"
                 style={{ height: "200px", objectFit: "cover" }}
               />
               <div className="card-body">
                 <h5 className="card-title">{course.title}</h5>
                 <p className="card-text text-muted">{course.description}</p>
                 <p className="text-success fw-bold">${course.price}</p>
-                <button 
+                <button
                   className="btn btn-primary"
-                  onClick={() => navigate(`/course-registration/${course.title}`)}
+                  onClick={() => {
+                    console.log(course);
+                    navigate(`/course-registration/${course.id}`) 
+                    }}
                 >
                   Apply Now
                 </button>

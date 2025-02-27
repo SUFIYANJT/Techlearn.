@@ -8,7 +8,7 @@ interface CourseRegistrationData {
     email: string;
     college: string;
     year: number;
-    program: string;
+    program: number;
     ieeMember: boolean;
     ieeId?: string;
     isReferralId: boolean;
@@ -26,7 +26,7 @@ const CourseRegistration = () => {
         email: "",
         college: "",
         year: 1,
-        program: title ?? "",
+        program: Number(title) ?? 0,
         ieeMember: false,
         ieeId: "",
         isReferralId: false,
@@ -90,7 +90,7 @@ const CourseRegistration = () => {
                     email: "",
                     college: "",
                     year: 1,
-                    program: title ?? "",
+                    program: Number(title) ?? 0,
                     ieeMember: false,
                     ieeId: "",
                     isReferralId: false,

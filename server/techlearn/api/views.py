@@ -25,6 +25,7 @@ class CourseFormView(APIView):
                 "message": "Course form submitted successfully!"
                 
             })
+        print("error is ",serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 class CourseRegisterationFormView(APIView):
@@ -37,6 +38,7 @@ class CourseRegisterationFormView(APIView):
                 "message": "Course registeration form submitted successfully!"
                 
             })
+        print(serializer.errors)
         return Response({"message": "Something wrong with the request form data ", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
     
 class CourseListView(generics.ListAPIView):
