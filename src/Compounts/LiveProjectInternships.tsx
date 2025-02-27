@@ -44,23 +44,12 @@ const LiveProjectInternships = () => {
           </div>
         </div>
 
-        <div className="right-section">
-          <div className="cards-container">
-            <div className="card1">
-              <button className="apply-btn">Apply Now</button>
-            </div>
-            <div className="card1">
-              <button className="apply-btn">Apply Now</button>
-            </div>
-            <div className="card1">
-              <button className="apply-btn">Apply Now</button>
-            </div>
-          </div>
-          
-        </div>
+     
        
       </div>
-      <button className="view-more-btn">View More Opportunities</button>
+      <button className="view-more-btn"
+      onClick={() => window.location.href = '/programs'}
+      >Apply for internship</button>
     </div>
   );
 };

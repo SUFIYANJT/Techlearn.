@@ -35,6 +35,7 @@ const Footer = () => {
             <a href="#" className="nav-link">Live Projects</a>
             <a href="#" className="nav-link">For Colleges</a>
             <a href="#" className="nav-link">For Startups</a>
+            
             <a href="#" className="nav-link">Contact Us</a>
           </nav>
         </div>

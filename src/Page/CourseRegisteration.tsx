@@ -48,6 +48,13 @@ const CourseRegistration = () => {
     const validateForm = () => {
         const newErrors: any = {};
 
+        // Make sure all fields are filled
+        if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
+        if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
+        if (!formData.email.trim()) newErrors.email = "Email is required";
+        if (!formData.college.trim()) newErrors.college = "College name is required";
+        if (!formData.bill.trim()) newErrors.bill = "Bill information is required";
+
         // Check for IEE ID if IEE Member is selected
         if (formData.ieeMember && !formData.ieeId) {
             newErrors.ieeId = "IEE ID is required if you are an IEE member.";
@@ -95,196 +102,366 @@ const CourseRegistration = () => {
         }
     };
 
+    // Dark theme colors
+    const colors = {
+        background: '#171717',
+        card: '#242424',
+        accent: '#00c6ff',
+        accentDark: '#0097c3',
+        text: '#ffffff',
+        textSecondary: '#b8b8b8',
+        border: '#383838',
+        inputBg: '#2a2a2a',
+        error: '#ff5252',
+        success: '#4caf50'
+    };
+
+    const formStyles = {
+        pageContainer: {
+            backgroundColor: colors.background,
+            minHeight: '100vh',
+            padding: '40px 0',
+            fontFamily: 'Arial, sans-serif'
+        },
+        formContainer: {
+            width: '70%',
+            maxWidth: '800px',
+            margin: '0 auto',
+            padding: '30px',
+            borderRadius: '12px',
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
+            backgroundColor: colors.card,
+        },
+        title: {
+            textAlign: 'center' as const,
+            color: colors.accent,
+            marginBottom: '30px',
+            fontWeight: 'bold',
+            fontSize: '32px',
+            borderBottom: `2px solid ${colors.accent}`,
+            paddingBottom: '15px'
+        },
+        formGroup: {
+            marginBottom: '22px'
+        },
+        label: {
+            fontWeight: 'bold',
+            color: colors.text,
+            display: 'block',
+            marginBottom: '8px',
+            fontSize: '16px'
+        },
+        input: {
+            width: '100%',
+            padding: '14px',
+            backgroundColor: colors.inputBg,
+            color: colors.text,
+            border: `1px solid ${colors.border}`,
+            borderRadius: '6px',
+            fontSize: '16px',
+            transition: 'all 0.3s',
+            outline: 'none'
+        },
+        focusInput: {
+            borderColor: colors.accent,
+            boxShadow: `0 0 8px rgba(0, 198, 255, 0.5)`
+        },
+        select: {
+            width: '100%',
+            padding: '14px',
+            backgroundColor: colors.inputBg,
+            color: colors.text,
+            border: `1px solid ${colors.border}`,
+            borderRadius: '6px',
+            fontSize: '16px',
+            cursor: 'pointer',
+            appearance: 'none',
+            backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b8b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: 'right 10px center',
+            backgroundSize: '20px',
+            paddingRight: '40px'
+        },
+        checkbox: {
+            marginRight: '10px',
+            width: '18px',
+            height: '18px',
+            accentColor: colors.accent, 
+            cursor: 'pointer'
+        },
+        checkboxLabel: {
+            display: 'flex',
+            alignItems: 'center',
+            cursor: 'pointer',
+            fontWeight: 'normal',
+            color: colors.text
+        },
+        button: {
+            backgroundColor: colors.accent,
+            color: '#000',
+            border: 'none',
+            padding: '15px 20px',
+            fontSize: '16px',
+            borderRadius: '6px',
+            cursor: 'pointer',
+            width: '100%',
+            marginTop: '30px',
+            fontWeight: 'bold',
+            transition: 'background-color 0.3s',
+            textTransform: 'uppercase' as const,
+            letterSpacing: '1px'
+        },
+        buttonHover: {
+            backgroundColor: colors.accentDark
+        },
+        error: {
+            color: colors.error,
+            fontSize: '14px',
+            marginTop: '5px',
+            fontWeight: 'bold'
+        },
+        sectionTitle: {
+            borderLeft: `4px solid ${colors.accent}`,
+            paddingLeft: '15px',
+            margin: '35px 0 20px 0',
+            color: colors.text,
+            fontSize: '20px',
+            fontWeight: 'bold'
+        },
+        requiredMark: {
+            color: colors.error,
+            marginLeft: '3px'
+        }
+    };
+
     return (
-        <div className="container mt-5" >
-            <h1 className="text-center">Course Registration</h1>
-            <form onSubmit={handleSubmit} style={{ width: '60%', margin: '0 auto' }}>
-                <div className="mb-3">
-                    <label className="form-label">Full Name</label>
-                    <input
-                        type="text"
-                        className={`form-control ${errors.fullName ? "is-invalid" : ""}`}
-                        name="fullName"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.fullName && <div className="invalid-feedback">{errors.fullName}</div>}
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Phone</label>
-                    <input
-                        type="text"
-                        className={`form-control ${errors.phone ? "is-invalid" : ""}`}
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.phone && <div className="invalid-feedback">{errors.phone}</div>}
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Email</label>
-                    <input
-                        type="email"
-                        className={`form-control ${errors.email ? "is-invalid" : ""}`}
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.email && <div className="invalid-feedback">{errors.email}</div>}
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">College</label>
-                    <input
-                        type="text"
-                        className={`form-control ${errors.college ? "is-invalid" : ""}`}
-                        name="college"
-                        value={formData.college}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.college && <div className="invalid-feedback">{errors.college}</div>}
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Year</label>
-                    <select
-                        className="form-control"
-                        name="year"
-                        value={formData.year}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value={1}>1st Year</option>
-                        <option value={2}>2nd Year</option>
-                        <option value={3}>3rd Year</option>
-                        <option value={4}>4th Year</option>
-                    </select>
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Program</label>
-                    <select
-                        className="form-control"
-                        name="program"
-                        value={formData.program}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value={1}>Course 1</option>
-                        <option value={2}>Course 2</option>
-                        <option value={3}>Course 3</option>
-                    </select>
-                </div>
-
-                <div className="mb-3">
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            name="ieeMember"
-                            checked={formData.ieeMember}
-                            onChange={handleChange}
-                        />
-                        <label className="form-check-label">IEE Member</label>
-                    </div>
-                </div>
-
-                {formData.ieeMember && (
-                    <div className="mb-3">
-                        <label className="form-label">IEE ID</label>
+        <div style={formStyles.pageContainer}>
+            <div style={formStyles.formContainer}>
+                <h1 style={formStyles.title}>Internship Registration</h1>
+                
+                <div style={formStyles.sectionTitle}>Personal Information</div>
+                
+                <form onSubmit={handleSubmit}>
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Full Name
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
                         <input
                             type="text"
-                            className={`form-control ${errors.ieeId ? "is-invalid" : ""}`}
-                            name="ieeId"
-                            value={formData.ieeId || ""}
+                            name="fullName"
+                            value={formData.fullName}
                             onChange={handleChange}
+                            required
+                            style={formStyles.input}
+                            onFocus={(e) => e.target.style.borderColor = colors.accent}
+                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            placeholder="Enter your full name"
                         />
-                        {errors.ieeId && <div className="invalid-feedback">{errors.ieeId}</div>}
+                        {errors.fullName && <div style={formStyles.error}>{errors.fullName}</div>}
                     </div>
-                )}
 
-                <div className="mb-3">
-                    <div className="form-check">
-                        <input
-                            className="form-check-input"
-                            type="checkbox"
-                            name="isReferralId"
-                            checked={formData.isReferralId}
-                            onChange={handleChange}
-                        />
-                        <label className="form-check-label">Has Referral ID</label>
-                    </div>
-                </div>
-
-                {formData.isReferralId && (
-                    <div className="mb-3">
-                        <label className="form-label">Referral Code</label>
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Phone
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
                         <input
                             type="text"
-                            className={`form-control ${errors.referralCode ? "is-invalid" : ""}`}
-                            name="referralCode"
-                            value={formData.referralCode || ""}
+                            name="phone"
+                            value={formData.phone}
                             onChange={handleChange}
+                            required
+                            style={formStyles.input}
+                            onFocus={(e) => e.target.style.borderColor = colors.accent}
+                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            placeholder="Enter your phone number"
                         />
-                        {errors.referralCode && <div className="invalid-feedback">{errors.referralCode}</div>}
+                        {errors.phone && <div style={formStyles.error}>{errors.phone}</div>}
                     </div>
-                )}
 
-                <div className="mb-3">
-                    <label className="form-label">Interest in Studying Abroad</label>
-                    <select
-                        className="form-control"
-                        name="interestInStudingAboard"
-                        value={formData.interestInStudingAboard}
-                        onChange={handleChange}
-                        required
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Email
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <input
+                            type="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.input}
+                            onFocus={(e) => e.target.style.borderColor = colors.accent}
+                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            placeholder="Enter your email address"
+                        />
+                        {errors.email && <div style={formStyles.error}>{errors.email}</div>}
+                    </div>
+
+                    <div style={formStyles.sectionTitle}>Educational Information</div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            College
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="college"
+                            value={formData.college}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.input}
+                            onFocus={(e) => e.target.style.borderColor = colors.accent}
+                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            placeholder="Enter your college name"
+                        />
+                        {errors.college && <div style={formStyles.error}>{errors.college}</div>}
+                    </div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Year
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <select
+                            name="year"
+                            value={formData.year}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.select}
+                        >
+                            <option value={1}>1st Year</option>
+                            <option value={2}>2nd Year</option>
+                            <option value={3}>3rd Year</option>
+                            <option value={4}>4th Year</option>
+                        </select>
+                    </div>
+
+                    <div style={formStyles.sectionTitle}>Program Information</div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Program
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <select
+                            name="program"
+                            value={formData.program}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.select}
+                        >
+                            <option value={1}>Data Science with AI</option>
+                            <option value={2}>Design With AI</option>
+                        </select>
+                    </div>
+
+                    <div style={formStyles.formGroup}>
+                        <div style={formStyles.checkboxLabel}>
+                            <input
+                                type="checkbox"
+                                name="isReferralId"
+                                checked={formData.isReferralId}
+                                onChange={handleChange}
+                                style={formStyles.checkbox}
+                            />
+                            <span>I have a Referral Code</span>
+                        </div>
+                    </div>
+
+                    {formData.isReferralId && (
+                        <div style={formStyles.formGroup}>
+                            <label style={formStyles.label}>
+                                Referral Code
+                                <span style={formStyles.requiredMark}>*</span>
+                            </label>
+                            <input
+                                type="text"
+                                name="referralCode"
+                                value={formData.referralCode || ""}
+                                onChange={handleChange}
+                                required={formData.isReferralId}
+                                style={formStyles.input}
+                                onFocus={(e) => e.target.style.borderColor = colors.accent}
+                                onBlur={(e) => e.target.style.borderColor = colors.border}
+                                placeholder="Enter your referral code"
+                            />
+                            {errors.referralCode && <div style={formStyles.error}>{errors.referralCode}</div>}
+                        </div>
+                    )}
+
+                    <div style={formStyles.sectionTitle}>Additional Information</div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Interest in Studying Abroad
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <select
+                            name="interestInStudingAboard"
+                            value={formData.interestInStudingAboard}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.select}
+                        >
+                            <option value={1}>Yes</option>
+                            <option value={2}>No</option>
+                            <option value={3}>Maybe</option>
+                        </select>
+                    </div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Interest
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <select
+                            name="InterestedIn"
+                            value={formData.InterestedIn}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.select}
+                        >
+                            <option value={1}>Programming</option>
+                            <option value={2}>Designing</option>
+                            <option value={3}>Non Coding</option>
+                            <option value={4}>Hardware</option>
+                            <option value={5}>None of the above</option>
+                        </select>
+                    </div>
+
+                    <div style={formStyles.formGroup}>
+                        <label style={formStyles.label}>
+                            Bill
+                            <span style={formStyles.requiredMark}>*</span>
+                        </label>
+                        <input
+                            type="text"
+                            name="bill"
+                            value={formData.bill}
+                            onChange={handleChange}
+                            required
+                            style={formStyles.input}
+                            onFocus={(e) => e.target.style.borderColor = colors.accent}
+                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            placeholder="Enter bill information"
+                        />
+                        {errors.bill && <div style={formStyles.error}>{errors.bill}</div>}
+                    </div>
+
+                    <button 
+                        type="submit" 
+                        style={formStyles.button}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.accentDark}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = colors.accent}
+                        disabled={loading}
                     >
-                        <option value={1}>Yes</option>
-                        <option value={2}>No</option>
-                        <option value={3}>Maybe</option>
-                    </select>
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Interest</label>
-                    <select
-                        className="form-control"
-                        name="InterestedIn"
-                        value={formData.InterestedIn}
-                        onChange={handleChange}
-                        required
-                    >
-                        <option value={1}>Programming</option>
-                        <option value={2}>Designing</option>
-                        <option value={3}>Non Coding</option>
-                        <option value={4}>Hardware</option>
-                        <option value={5}>None of the above</option>
-                    </select>
-                </div>
-
-                <div className="mb-3">
-                    <label className="form-label">Bill</label>
-                    <input
-                        type="text"
-                        className={`form-control ${errors.bill ? "is-invalid" : ""}`}
-                        name="bill"
-                        value={formData.bill}
-                        onChange={handleChange}
-                        required
-                    />
-                    {errors.bill && <div className="invalid-feedback">{errors.bill}</div>}
-                </div>
-
-                <button type="submit" className="btn btn-primary" disabled={loading}>
-                    {loading ? "Submitting..." : "Submit"}
-                </button>
-            </form>
+                        {loading ? "Processing..." : "Submit Registration"}
+                    </button>
+                </form>
+            </div>
         </div>
     );
 };

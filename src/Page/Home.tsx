@@ -36,20 +36,12 @@ const Home: React.FC<HomeProps> = () => {
                 onClick={() => window.location.href = '/programs'}
               >
                 <span className="flex items-center">
-                  Explore Programs
+                  Join IIT Intership Program
                   <ArrowRight className="ml-1 w-5 h-5" strokeWidth={2} />
                 </span>
               </button>
               
-              <button 
-                className="btn join flex items-center justify-center gap-2"
-                onClick={() => window.location.href = '/projects'}
-              >
-                <span className="flex items-center">
-                  Join Live Projects
-                  <ArrowRight className="ml-1 w-5 h-5" strokeWidth={2} />
-                </span>
-              </button>
+             
              
             </div>
           </div>

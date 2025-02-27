@@ -77,6 +77,7 @@ const ContactForm = () => {
                 <option value="option1">Live Project</option>
                 <option value="option2">For Colleges</option>
                 <option value="option3">For Startups</option>
+                <option value="option4">For Intership</option>
               </select>
             </div>
 
