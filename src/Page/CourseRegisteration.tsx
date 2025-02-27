@@ -26,7 +26,7 @@ const CourseRegistration = () => {
         email: "",
         college: "",
         year: 1,
-        program: title ??"",
+        program: title ?? "",
         ieeMember: false,
         ieeId: "",
         isReferralId: false,
@@ -78,7 +78,11 @@ const CourseRegistration = () => {
         if (Object.keys(formErrors).length === 0) {
             setLoading(true);
             try {
-                await axios.post("https://techlearn-server.onrender.com/courseregistration/", formData);
+                await axios.post("https://techlearn-server.onrender.com/courseregisteration/", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    },
+                });
                 alert("Registration successful!");
                 setFormData({
                     fullName: "",
@@ -199,9 +203,9 @@ const CourseRegistration = () => {
         <div className="container mt-5" style={{ backgroundColor: '#f9f9f9', padding: '40px 0' }}>
             <div style={formStyles.formContainer}>
                 <h1 style={formStyles.title}>Internship Registration</h1>
-                
+
                 <div style={formStyles.sectionTitle}>Personal Information</div>
-                
+
                 <form onSubmit={handleSubmit}>
                     <div style={formStyles.formGroup}>
                         <label style={formStyles.label}>Full Name *</label>
@@ -284,12 +288,12 @@ const CourseRegistration = () => {
                             <option value={4}>4th Year</option>
                         </select>
                     </div>
-                    
-                   
 
-        
 
-            
+
+
+
+
 
                     <div style={formStyles.formGroup}>
                         <div style={formStyles.checkboxLabel}>
@@ -371,8 +375,8 @@ const CourseRegistration = () => {
                         {errors.bill && <div style={formStyles.error}>{errors.bill}</div>}
                     </div>
 
-                    <button 
-                        type="submit" 
+                    <button
+                        type="submit"
                         style={formStyles.button}
                         onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2980b9'}
                         onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#3498db'}
