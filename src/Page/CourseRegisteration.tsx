@@ -47,14 +47,6 @@ const CourseRegistration = () => {
 
     const validateForm = () => {
         const newErrors: any = {};
-
-        // Make sure all fields are filled
-        if (!formData.fullName.trim()) newErrors.fullName = "Full name is required";
-        if (!formData.phone.trim()) newErrors.phone = "Phone number is required";
-        if (!formData.email.trim()) newErrors.email = "Email is required";
-        if (!formData.college.trim()) newErrors.college = "College name is required";
-        if (!formData.bill.trim()) newErrors.bill = "Bill information is required";
-
         // Check for IEE ID if IEE Member is selected
         if (formData.ieeMember && !formData.ieeId) {
             newErrors.ieeId = "IEE ID is required if you are an IEE member.";
@@ -102,140 +94,99 @@ const CourseRegistration = () => {
         }
     };
 
-    // Dark theme colors
-    const colors = {
-        background: '#171717',
-        card: '#242424',
-        accent: '#00c6ff',
-        accentDark: '#0097c3',
-        text: '#ffffff',
-        textSecondary: '#b8b8b8',
-        border: '#383838',
-        inputBg: '#2a2a2a',
-        error: '#ff5252',
-        success: '#4caf50'
-    };
-
     const formStyles = {
-        pageContainer: {
-            backgroundColor: colors.background,
-            minHeight: '100vh',
-            padding: '40px 0',
-            fontFamily: 'Arial, sans-serif'
-        },
         formContainer: {
             width: '70%',
-            maxWidth: '800px',
             margin: '0 auto',
             padding: '30px',
-            borderRadius: '12px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.4)',
-            backgroundColor: colors.card,
+            borderRadius: '10px',
+            boxShadow: '0 0 20px rgba(0, 0, 0, 0.1)',
+            backgroundColor: '#fff',
+            fontFamily: 'Arial, sans-serif'
         },
         title: {
             textAlign: 'center' as const,
-            color: colors.accent,
+            color: '#2c3e50',
             marginBottom: '30px',
             fontWeight: 'bold',
             fontSize: '32px',
-            borderBottom: `2px solid ${colors.accent}`,
-            paddingBottom: '15px'
+            borderBottom: '2px solid #3498db',
+            paddingBottom: '10px'
         },
         formGroup: {
-            marginBottom: '22px'
+            marginBottom: '20px'
         },
         label: {
             fontWeight: 'bold',
-            color: colors.text,
+            color: '#2c3e50',
             display: 'block',
-            marginBottom: '8px',
-            fontSize: '16px'
+            marginBottom: '8px'
         },
         input: {
             width: '100%',
-            padding: '14px',
-            backgroundColor: colors.inputBg,
-            color: colors.text,
-            border: `1px solid ${colors.border}`,
+            padding: '12px',
+            border: '1px solid #ddd',
             borderRadius: '6px',
             fontSize: '16px',
-            transition: 'all 0.3s',
+            transition: 'border-color 0.3s',
             outline: 'none'
         },
         focusInput: {
-            borderColor: colors.accent,
-            boxShadow: `0 0 8px rgba(0, 198, 255, 0.5)`
+            borderColor: '#3498db',
+            boxShadow: '0 0 5px rgba(52, 152, 219, 0.5)'
         },
         select: {
             width: '100%',
-            padding: '14px',
-            backgroundColor: colors.inputBg,
-            color: colors.text,
-            border: `1px solid ${colors.border}`,
+            padding: '12px',
+            border: '1px solid #ddd',
             borderRadius: '6px',
             fontSize: '16px',
-            cursor: 'pointer',
-            appearance: 'none',
-            backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23b8b8b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'right 10px center',
-            backgroundSize: '20px',
-            paddingRight: '40px'
+            backgroundColor: '#fff',
+            cursor: 'pointer'
         },
         checkbox: {
             marginRight: '10px',
-            width: '18px',
-            height: '18px',
-            accentColor: colors.accent, 
+            transform: 'scale(1.2)',
             cursor: 'pointer'
         },
         checkboxLabel: {
             display: 'flex',
             alignItems: 'center',
             cursor: 'pointer',
-            fontWeight: 'normal',
-            color: colors.text
+            fontWeight: 'normal'
         },
         button: {
-            backgroundColor: colors.accent,
-            color: '#000',
+            backgroundColor: '#3498db',
+            color: 'white',
             border: 'none',
-            padding: '15px 20px',
+            padding: '14px 20px',
             fontSize: '16px',
             borderRadius: '6px',
             cursor: 'pointer',
             width: '100%',
-            marginTop: '30px',
+            marginTop: '20px',
             fontWeight: 'bold',
-            transition: 'background-color 0.3s',
-            textTransform: 'uppercase' as const,
-            letterSpacing: '1px'
+            transition: 'background-color 0.3s'
         },
         buttonHover: {
-            backgroundColor: colors.accentDark
+            backgroundColor: '#2980b9'
         },
         error: {
-            color: colors.error,
+            color: '#e74c3c',
             fontSize: '14px',
-            marginTop: '5px',
-            fontWeight: 'bold'
+            marginTop: '5px'
         },
         sectionTitle: {
-            borderLeft: `4px solid ${colors.accent}`,
-            paddingLeft: '15px',
-            margin: '35px 0 20px 0',
-            color: colors.text,
-            fontSize: '20px',
-            fontWeight: 'bold'
-        },
-        requiredMark: {
-            color: colors.error,
-            marginLeft: '3px'
+            borderLeft: '4px solid #3498db',
+            paddingLeft: '10px',
+            margin: '30px 0 20px 0',
+            color: '#2c3e50',
+            fontSize: '20px'
         }
     };
 
     return (
-        <div style={formStyles.pageContainer}>
+        <div className="container mt-5" style={{ backgroundColor: '#f9f9f9', padding: '40px 0' }}>
             <div style={formStyles.formContainer}>
                 <h1 style={formStyles.title}>Internship Registration</h1>
                 
@@ -243,10 +194,7 @@ const CourseRegistration = () => {
                 
                 <form onSubmit={handleSubmit}>
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Full Name
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Full Name</label>
                         <input
                             type="text"
                             name="fullName"
@@ -254,18 +202,15 @@ const CourseRegistration = () => {
                             onChange={handleChange}
                             required
                             style={formStyles.input}
-                            onFocus={(e) => e.target.style.borderColor = colors.accent}
-                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                            onBlur={(e) => e.target.style.borderColor = '#ddd'}
                             placeholder="Enter your full name"
                         />
                         {errors.fullName && <div style={formStyles.error}>{errors.fullName}</div>}
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Phone
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Phone</label>
                         <input
                             type="text"
                             name="phone"
@@ -273,18 +218,15 @@ const CourseRegistration = () => {
                             onChange={handleChange}
                             required
                             style={formStyles.input}
-                            onFocus={(e) => e.target.style.borderColor = colors.accent}
-                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                            onBlur={(e) => e.target.style.borderColor = '#ddd'}
                             placeholder="Enter your phone number"
                         />
                         {errors.phone && <div style={formStyles.error}>{errors.phone}</div>}
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Email
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Email</label>
                         <input
                             type="email"
                             name="email"
@@ -292,8 +234,8 @@ const CourseRegistration = () => {
                             onChange={handleChange}
                             required
                             style={formStyles.input}
-                            onFocus={(e) => e.target.style.borderColor = colors.accent}
-                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                            onBlur={(e) => e.target.style.borderColor = '#ddd'}
                             placeholder="Enter your email address"
                         />
                         {errors.email && <div style={formStyles.error}>{errors.email}</div>}
@@ -302,10 +244,7 @@ const CourseRegistration = () => {
                     <div style={formStyles.sectionTitle}>Educational Information</div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            College
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>College</label>
                         <input
                             type="text"
                             name="college"
@@ -313,18 +252,15 @@ const CourseRegistration = () => {
                             onChange={handleChange}
                             required
                             style={formStyles.input}
-                            onFocus={(e) => e.target.style.borderColor = colors.accent}
-                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                            onBlur={(e) => e.target.style.borderColor = '#ddd'}
                             placeholder="Enter your college name"
                         />
                         {errors.college && <div style={formStyles.error}>{errors.college}</div>}
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Year
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Year</label>
                         <select
                             name="year"
                             value={formData.year}
@@ -342,10 +278,7 @@ const CourseRegistration = () => {
                     <div style={formStyles.sectionTitle}>Program Information</div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Program
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Program</label>
                         <select
                             name="program"
                             value={formData.program}
@@ -373,19 +306,15 @@ const CourseRegistration = () => {
 
                     {formData.isReferralId && (
                         <div style={formStyles.formGroup}>
-                            <label style={formStyles.label}>
-                                Referral Code
-                                <span style={formStyles.requiredMark}>*</span>
-                            </label>
+                            <label style={formStyles.label}>Referral Code</label>
                             <input
                                 type="text"
                                 name="referralCode"
                                 value={formData.referralCode || ""}
                                 onChange={handleChange}
-                                required={formData.isReferralId}
                                 style={formStyles.input}
-                                onFocus={(e) => e.target.style.borderColor = colors.accent}
-                                onBlur={(e) => e.target.style.borderColor = colors.border}
+                                onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                                onBlur={(e) => e.target.style.borderColor = '#ddd'}
                                 placeholder="Enter your referral code"
                             />
                             {errors.referralCode && <div style={formStyles.error}>{errors.referralCode}</div>}
@@ -395,10 +324,7 @@ const CourseRegistration = () => {
                     <div style={formStyles.sectionTitle}>Additional Information</div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Interest in Studying Abroad
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Interest in Studying Abroad</label>
                         <select
                             name="interestInStudingAboard"
                             value={formData.interestInStudingAboard}
@@ -413,10 +339,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Interest
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Interest</label>
                         <select
                             name="InterestedIn"
                             value={formData.InterestedIn}
@@ -433,10 +356,7 @@ const CourseRegistration = () => {
                     </div>
 
                     <div style={formStyles.formGroup}>
-                        <label style={formStyles.label}>
-                            Bill
-                            <span style={formStyles.requiredMark}>*</span>
-                        </label>
+                        <label style={formStyles.label}>Bill</label>
                         <input
                             type="text"
                             name="bill"
@@ -444,8 +364,8 @@ const CourseRegistration = () => {
                             onChange={handleChange}
                             required
                             style={formStyles.input}
-                            onFocus={(e) => e.target.style.borderColor = colors.accent}
-                            onBlur={(e) => e.target.style.borderColor = colors.border}
+                            onFocus={(e) => e.target.style.borderColor = '#3498db'}
+                            onBlur={(e) => e.target.style.borderColor = '#ddd'}
                             placeholder="Enter bill information"
                         />
                         {errors.bill && <div style={formStyles.error}>{errors.bill}</div>}
@@ -454,8 +374,8 @@ const CourseRegistration = () => {
                     <button 
                         type="submit" 
                         style={formStyles.button}
-                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = colors.accentDark}
-                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = colors.accent}
+                        onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#2980b9'}
+                        onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#3498db'}
                         disabled={loading}
                     >
                         {loading ? "Processing..." : "Submit Registration"}
