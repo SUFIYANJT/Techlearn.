@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useLocation } from "react-router-dom";
 interface CourseRegistrationData {
@@ -50,9 +50,12 @@ const CourseRegistration = () => {
 
         // Apply discount if the referral code is "Realwebclg"
         if (name === "referralCode") {
-           sendRequest()
+           
         }
     };
+    useEffect(()=>{
+        sendRequest()
+    },[formData.referralCode])
     const sendRequest = async () => {
         try {
           const response = await axios.post("https://techlearn-server.onrender.com/checkPrice/", {
@@ -64,6 +67,8 @@ const CourseRegistration = () => {
           }
         } catch (err) {
           console.error("Request failed:", err);
+          setFinalPrice(price);
+
         }
       };
 

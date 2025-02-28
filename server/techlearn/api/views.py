@@ -4,7 +4,7 @@ from rest_framework.views import APIView
 from .models import Contact,Course
 from .serializer import ContactSerializer,CourseSerializer,CourseRegistrationSerializer
 
-referallist = ['Realweb']
+referallist = ['Realwebclg']
 
 class ContactFormView(APIView):
     def post(self, request):
@@ -38,7 +38,6 @@ class CourseRegisterationFormView(APIView):
             return Response({
                 "success":True,
                 "message": "Course registeration form submitted successfully!"
-                
             })
         print(serializer.errors)
         return Response({"message": "Something wrong with the request form data ", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
@@ -51,6 +50,7 @@ class CourseListView(generics.ListAPIView):
 class CheckPriceView(APIView):
     def post(self, request):
         price = request.data.get("price")  # DRF automatically parses JSON request body
+        print(price)
         if price is not None and price in referallist:
             return Response({"price": price}, status=status.HTTP_200_OK)
         return Response({"error": "Invalid request"}, status=status.HTTP_400_BAD_REQUEST)
