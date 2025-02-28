@@ -48,12 +48,14 @@ const Courses = () => {
               <div className="card-body">
                 <h5 className="card-title">{course.title}</h5>
                 <p className="card-text text-muted">{course.description}</p>
-                <p className="text-success fw-bold">${course.price}</p>
+                <p className="text-success fw-bold">₹{course.price}</p>
                 <button
                   className="btn btn-primary"
                   onClick={() => {
                     console.log(course);
-                    navigate(`/course-registration/${course.id}`) 
+                    navigate(`/course-registration/${course.id}`,{
+                      state: { price: course.price, title: course.title },
+                    }) 
                     }}
                 >
                   Apply Now

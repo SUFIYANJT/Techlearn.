@@ -1,7 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-
+import { useParams, useLocation } from "react-router-dom";
 interface CourseRegistrationData {
     fullName: string;
     phone: string;
@@ -35,16 +34,23 @@ const CourseRegistration = () => {
         InterestedIn: 1,
         bill: "",
     });
-
+    const location = useLocation();
+    const { price } = location.state || { price: 0 };
     const [errors, setErrors] = useState<any>({});
     const [loading, setLoading] = useState(false);
-
+    const [finalPrice, setFinalPrice] = useState(price);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value, type, checked } = e.target as HTMLInputElement;
+
         setFormData((prev) => ({
             ...prev,
             [name]: type === "checkbox" ? checked : value,
         }));
+
+        // Apply discount if the referral code is "Realwebclg"
+        if (name === "referralCode") {
+            setFinalPrice(value === "Realwebclg" ? 199 : 299);
+        }
     };
 
     const validateForm = () => {
@@ -82,7 +88,9 @@ const CourseRegistration = () => {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },
-                });
+                }
+                
+            );
                 alert("Registration successful!");
                 setFormData({
                     fullName: "",
@@ -374,7 +382,9 @@ const CourseRegistration = () => {
                         />
                         {errors.bill && <div style={formStyles.error}>{errors.bill}</div>}
                     </div>
-
+                    <div>
+                    <p className="text-center text-success fw-bold">Course Price: ₹{finalPrice}</p> {/* Price display */}
+                    </div>
                     <button
                         type="submit"
                         style={formStyles.button}
