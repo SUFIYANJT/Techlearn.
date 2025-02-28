@@ -36,6 +36,7 @@ const CourseRegistration = () => {
     });
     const location = useLocation();
     const { price } = location.state || { price: 0 };
+    console.log(price)
     const [errors, setErrors] = useState<any>({});
     const [loading, setLoading] = useState(false);
     const [finalPrice, setFinalPrice] = useState(price);
@@ -49,9 +50,21 @@ const CourseRegistration = () => {
 
         // Apply discount if the referral code is "Realwebclg"
         if (name === "referralCode") {
-            setFinalPrice(value === "Realwebclg" ? 199 : 299);
+           sendRequest()
         }
     };
+    const sendRequest = async () => {
+        try {
+          const response = await axios.post("https://techlearn-server.onrender.com/checkPrice/", {
+            price: 100, // Example price data
+          });
+          if (response.status == 200){
+            setFinalPrice(price - 100);
+          }
+        } catch (err) {
+          console.error("Request failed:", err);
+        }
+      };
 
     const validateForm = () => {
         const newErrors: any = {};

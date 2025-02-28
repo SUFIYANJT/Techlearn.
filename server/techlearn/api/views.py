@@ -44,3 +44,16 @@ class CourseRegisterationFormView(APIView):
 class CourseListView(generics.ListAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
+    
+
+import json
+from django.http import JsonResponse
+
+def checkPrice(request):
+    if request.method == "POST":
+        try:
+            body = json.loads(request.body.decode("utf-8"))  # Decode and parse JSON
+            price = body.get("price")
+            return JsonResponse({"price": price})
+        except json.JSONDecodeError:
+            return JsonResponse({"error": "Invalid JSON"}, status=400)

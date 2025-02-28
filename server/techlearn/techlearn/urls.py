@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from api.views import ContactFormView,CourseFormView,CourseRegisterationFormView,CourseListView
+from api.views import ContactFormView,CourseFormView,CourseRegisterationFormView,CourseListView,checkPrice
 from django.conf.urls.static import static
 from django.conf import settings
 
@@ -26,4 +26,5 @@ urlpatterns = [
     path('course/', CourseFormView.as_view(), name='submit-course'),  # ✅ Use `.as_view()`
     path('courseregisteration/', CourseRegisterationFormView.as_view(), name='submit-courseregisteration'),  # ✅ Use `.as_view()`
     path('courses/', CourseListView.as_view(), name='course-list'),
+    path('checkPrice/',checkPrice,name="checkprice")
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
