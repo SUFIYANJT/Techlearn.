@@ -56,10 +56,11 @@ const CourseRegistration = () => {
     const sendRequest = async () => {
         try {
           const response = await axios.post("https://techlearn-server.onrender.com/checkPrice/", {
-            price: 100, // Example price data
+            price: formData.referralCode, // Example price data
           });
           if (response.status == 200){
             setFinalPrice(price - 100);
+            console.log(response.data)
           }
         } catch (err) {
           console.error("Request failed:", err);
