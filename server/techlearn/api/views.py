@@ -49,11 +49,9 @@ class CourseListView(generics.ListAPIView):
 import json
 from django.http import JsonResponse
 
-def checkPrice(request):
-    if request.method == "POST":
-        try:
-            body = json.loads(request.body.decode("utf-8"))  # Decode and parse JSON
-            price = body.get("price")
-            return JsonResponse({"price": price})
-        except json.JSONDecodeError:
-            return JsonResponse({"error": "Invalid JSON"}, status=400)
+class CheckPriceView(APIView):
+    def post(self, request):
+        price = request.data.get("price")  # DRF automatically parses JSON request body
+        if price is not None:
+            return Response({"price": price}, status=status.HTTP_200_OK)
+        return Response({"error": "Invalid request"}, status=status.HTTP_400_BAD_REQUEST)
