@@ -99,17 +99,22 @@ const CourseRegistration = () => {
         e.preventDefault();
         const formErrors = validateForm();
         setErrors(formErrors);
-
+    
         if (Object.keys(formErrors).length === 0) {
             setLoading(true);
             try {
-                await axios.post("https://techlearn-server.onrender.com/courseregisteration/", formData, {
+                // Ensure the phone number starts with +91
+                const updatedFormData = {
+                    ...formData,
+                    phone: formData.phone.startsWith("+91") ? formData.phone : `+91${formData.phone}`
+                };
+    
+                await axios.post("https://techlearn-server.onrender.com/courseregisteration/", updatedFormData, {
                     headers: {
                         "Content-Type": "multipart/form-data"
                     },
-                }
-                
-            );
+                });
+    
                 alert("Registration successful!");
                 setFormData({
                     fullName: "",
@@ -134,10 +139,10 @@ const CourseRegistration = () => {
             }
         }
     };
+    
 
     const formStyles = {
         formContainer: {
-            width: '70%',
             margin: '0 auto',
             padding: '30px',
             borderRadius: '10px',
@@ -227,8 +232,8 @@ const CourseRegistration = () => {
     };
 
     return (
-        <div className="container mt-5" style={{ backgroundColor: '#f9f9f9', padding: '40px 0' }}>
-            <div style={formStyles.formContainer}>
+        <div className="col-12" style={{ backgroundColor: '#f9f9f9', padding: '40px 0' }}>
+            <div className="col-11 col-md-8" style={formStyles.formContainer}>
                 <h1 style={formStyles.title}>Internship Registration</h1>
 
                 <div style={formStyles.sectionTitle}>Personal Information</div>
