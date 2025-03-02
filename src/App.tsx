@@ -8,14 +8,13 @@ import Home from './Page/Home';
 import Courses from './Page/Programs';
 import CourseRegistration from './Page/CourseRegisteration';
 
-
 const App = () => {
   return (
     <Router> 
       <div className="App">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path='/programs' element={<Courses/>}/>
+          <Route path="/programs" element={<Courses />} />
           <Route path="/course-registration/:title" element={<CourseRegistration />} />
         </Routes>
       </div>

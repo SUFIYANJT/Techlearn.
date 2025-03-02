@@ -16,6 +16,7 @@ class Course(models.Model):
     description = models.TextField(blank=False, null=False)  # Required and not null
     price = models.IntegerField(blank=False, null=False,default=0)  # Required and not null
     image = models.ImageField(upload_to='course_images/', blank=False, null=False,default='course_images/internship_demo.jpg')  # Required and not null
+    link  = models.URLField(max_length=1000, blank=True, null=True)
     
 from django.core.exceptions import ValidationError
 

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { useNavigate } from "react-router-dom";
 
 interface Course {
   id: number;
@@ -14,7 +13,6 @@ interface Course {
 const Courses = () => {
   const [courses, setCourses] = useState<Course[]>([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get("https://techlearn-server.onrender.com/courses/")
@@ -53,9 +51,6 @@ const Courses = () => {
                   className="btn btn-primary"
                   onClick={() => {
                     console.log(course);
-                    navigate(`/course-registration/${course.id}`,{
-                      state: { price: course.price, title: course.title },
-                    }) 
                     }}
                 >
                   Apply Now
