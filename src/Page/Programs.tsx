@@ -8,6 +8,7 @@ interface Course {
   description: string;
   price: number;
   image: string;
+  link: string;
 }
 
 const Courses = () => {
@@ -51,9 +52,10 @@ const Courses = () => {
                   className="btn btn-primary"
                   onClick={() => {
                     console.log(course);
+                    //window.location.href = course.link; //
                     }}
                 >
-                  Apply Now
+                  Enroll Now
                 </button>
               </div>
             </div>

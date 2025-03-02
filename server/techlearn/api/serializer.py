@@ -11,7 +11,7 @@ class ContactSerializer(serializers.ModelSerializer):
 class CourseSerializer(serializers.ModelSerializer):
     class Meta:
         model = Course
-        fields = ['id','title','description', 'price', 'image'] 
+        fields = ['id','title','description', 'price', 'image','link'] 
  
 class CourseRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
