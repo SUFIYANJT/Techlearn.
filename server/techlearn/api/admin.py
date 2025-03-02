@@ -66,7 +66,7 @@ from .models import Course
 # Custom Admin view for Course model
 class CourseAdmin(admin.ModelAdmin):
     # Display the fields you want in the list view
-    list_display = ('title', 'price', 'description', 'image')
+    list_display = ('title', 'price', 'description', 'image','link')
 
     # Add filters for fields
     list_filter = ('price',)  # For example, you can filter by price
@@ -77,7 +77,7 @@ class CourseAdmin(admin.ModelAdmin):
     # Define how the form should be displayed in the admin panel
     fieldsets = (
         (None, {
-            'fields': ('title', 'description', 'price', 'image')
+            'fields': ('title', 'description', 'price', 'image','link')
         }),
     )
 
